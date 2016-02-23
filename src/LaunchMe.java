@@ -13,7 +13,7 @@ public class LaunchMe {
 	static int borneMaxQID1 = 5;
 	/* Bornes min et max pour le QID n�2 */
 	static int borneMinQID2 = 1;
-	static int borneMaxQID2 = 50;
+	static int borneMaxQID2 = 5;
 	/* Tableau contenant toutes les valeurs des donn�es sensibles possibles */
 	static String[] tabMaladies = {"Leucemie","SIDA","Vitiligo","Biermer","Blennorragie","Hemochromatose"};
 	/* Nombre de valeurs possibles pour la donn�e sensible */
