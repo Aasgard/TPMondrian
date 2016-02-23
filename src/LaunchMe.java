@@ -15,14 +15,23 @@ public class LaunchMe {
 	static int borneMinQID2 = 2;
 	static int borneMaxQID2 = 13;
 	/* Tableau contenant toutes les valeurs des données sensibles possibles */
-	static String[] tabMaladies = {"Leucémie","SIDA","Vitiligo","Biermer","Blennorragie","Hémochromatose"};
+	static String[] tabMaladies = {"Leucémie","SIDA","Vitiligo","Biermer","Blénnorragie","Hémochromatose"};
 	/* Nombre de valeurs possibles pour la donnée sensible */
 	static int nbValeursSD = tabMaladies.length;
 	static int k;
 	
-	public static void mondrian(ArrayList<DataLine> data){
+	public static void mondrian(ArrayList<DataLine> data, int k){
 		System.out.println(data.toString());
+		
+		
+		
 	}
+	
+	/*public int chooseDimension(){
+		int resultDimension = 0;
+
+		return resultDimension;
+	}*/
 	
 	public static void main(String[] args) {
 		
@@ -52,11 +61,25 @@ public class LaunchMe {
 			bw.flush();
 			/* Fermeture du BW */
 			bw.close();
+			
+			/* Création du fichier dans lequel nous allons écrire nos données */
+			BufferedWriter bwR = new BufferedWriter(new FileWriter(new File("RawDataList.csv"),false));
+			/* On ajoute nos noms de colonnes */
+			bwR.append("QID1, QID2, SD \n");
+			/* Parcours de chaque tuple pour l'écrire dans le fichier */
+			for (DataLine dataLine : dataList) {
+				/* On ajoute chaque DataLine sous son format CSV */
+				bwR.append(dataLine.toRawCSV());
+			}
+			/* Application de l'écriture des données */
+			bwR.flush();
+			/* Fermeture du BW */
+			bwR.close();
 			System.out.println("Ecriture des colonnes effectuée avec succès !");
 			
 			System.out.println("Début de l'algorithme de Mondrian ...");
 			/* Appel de l'algorithme de Mondrian */
-			LaunchMe.mondrian(dataList);
+			LaunchMe.mondrian(dataList,k);
 		} catch (IOException e) {
 			System.out.println("Erreur dans l'écriture du fichier" + e.getMessage());
 		}

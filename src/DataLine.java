@@ -39,6 +39,10 @@ public class DataLine {
 		return this.qid1 + ", " + this.qid2 + "\n";
 	}
 	
+	public String toRawCSV(){
+		return this.qid1 + ", " + this.qid2 + ", " + this.sd + "\n";
+	}
+	
 	@Override
 	public String toString() {
 		return "DataLine [qid1=" + qid1 + ", qid2=" + qid2 + ", sd=" + sd + "]";
