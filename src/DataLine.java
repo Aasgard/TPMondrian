@@ -51,7 +51,8 @@ public class DataLine {
 	
 	@Override
 	public String toString() {
-		return "DataLine [qid1=" + qid1 + ", qid2=" + qid2 + ", sd=" + sd + "]";
+		//return "DataLine [qid1=" + qid1 + ", qid2=" + qid2 + ", sd=" + sd + "]";
+		return "DL [" + qid1 + "," + qid2 + "]";
 	}
 	
 }

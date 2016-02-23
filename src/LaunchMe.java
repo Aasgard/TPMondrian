@@ -7,13 +7,13 @@ import java.util.ArrayList;
 public class LaunchMe {
 
 	/* Nombre de tuples */
-	static int n = 100;
+	static int n = 8;
 	/* Bornes min et max pour le QID nï¿½1 */
 	static int borneMinQID1 = 1;
-	static int borneMaxQID1 = 5;
+	static int borneMaxQID1 = 10;
 	/* Bornes min et max pour le QID nï¿½2 */
 	static int borneMinQID2 = 1;
-	static int borneMaxQID2 = 5;
+	static int borneMaxQID2 = 10;
 	/* Tableau contenant toutes les valeurs des donnï¿½es sensibles possibles */
 	static String[] tabMaladies = {"Leucemie","SIDA","Vitiligo","Biermer","Blennorragie","Hemochromatose"};
 	/* Nombre de valeurs possibles pour la donnï¿½e sensible */
@@ -24,13 +24,13 @@ public class LaunchMe {
 		
 		ArrayList<DataLine> dataList = new ArrayList<DataLine>();
 
-		/* Crï¿½ation de n lignes (tuples) */
+		/* Création de n lignes (tuples) */
 		for(int i = 1; i <= n; i++){
 			DataLine currentDL = new DataLine(RandomInt.randInt(borneMinQID1, borneMaxQID1), RandomInt.randInt(borneMinQID2, borneMaxQID2), tabMaladies[RandomInt.randInt(0, nbValeursSD-1)]);
 			dataList.add(currentDL);
 		}
-		/* Dï¿½but Objet de la liste de tuples */
-		//System.out.println(dataList.toString());
+		/* Début Objet de la liste de tuples */
+		System.out.println(dataList.toString() + "\n");
 
 		System.out.println("Debut de l'ecriture dans le fichier ...");
 		try {
@@ -72,7 +72,7 @@ public class LaunchMe {
 			
 			/* Appel de l'algorithme de Mondrian */
 			Mondrian mond = new Mondrian(dataList, k);
-			mond.doMondrian(dataList, k);
+			System.out.println(mond.doMondrian(dataList, k).toString());
 			
 			
 			

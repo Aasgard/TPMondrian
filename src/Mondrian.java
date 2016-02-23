@@ -1,17 +1,19 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 public class Mondrian {
 	
 	private ArrayList<DataLine> data;
 	private int k;
+	private ArrayList<ArrayList<DataLine>> ensembleDecoupe;
 	
 	public Mondrian(ArrayList<DataLine> data, int k) {
 		this.data = data;
 		this.k = k;
+		ensembleDecoupe = new ArrayList<ArrayList<DataLine>>();
 	}
 	
 	public int chooseDimension(ArrayList<DataLine> data){
@@ -51,12 +53,11 @@ public class Mondrian {
 	}
 	
 	public int findMedian(HashMap<Integer,Integer> fs){
-		System.out.println("Taille du HashMap en entrée : " + fs.size());
 		int cumulValeurs = 0;
 		int cutValue = 0;
 		Map<Integer, Integer> sortedMap = new TreeMap<Integer, Integer>(fs);
 		
-		int totalValues = 0;
+		double totalValues = 0;
 		
 		for(Entry<Integer, Integer> entry : sortedMap.entrySet()) {
 			int value = entry.getValue();
@@ -64,28 +65,31 @@ public class Mondrian {
 			totalValues += value;
 		}
 		
-		System.out.println("Map triée : " + sortedMap.toString());
+		//System.out.println("Il y a " + (int)totalValues + " valeurs dans le HashMap.");
+		//System.out.println("Map triée : " + sortedMap.toString());
+		
+		//System.out.println("Moitié du jeu de données : " + (Double)(totalValues/2));
 
 		for(Entry<Integer, Integer> entry : sortedMap.entrySet()) {
 			int key = entry.getKey();
 			int value = entry.getValue();
-
-			cutValue = key;
-			cumulValeurs += value;
-
-			if(cumulValeurs >= /*data.size()*/totalValues/2){
+			
+			cumulValeurs = cumulValeurs + value;
+			
+			if(cumulValeurs >= Math.round(totalValues/2)){
+				cutValue = key;
 				break;
 			}
 		}
 		
-		System.out.println("Médiane : " + cutValue);
+		//System.out.println("Médiane : " + cutValue);
 
 		return cutValue;
 	}
 	
-	public void doMondrian(ArrayList<DataLine> data, int k){
-		if(data.size() <= k){
-			System.out.println("Terminé ! ");
+	public ArrayList<ArrayList<DataLine>> doMondrian(ArrayList<DataLine> data, int k){
+		if(!isCutable(data, k)){
+			System.out.println("Terminé ! Je renvoie le jeu de données en paramètre.");
 		}else{
 			int dimension = chooseDimension(data);
 			HashMap<Integer,Integer> fs = frequencySet(data, dimension);
@@ -101,19 +105,51 @@ public class Mondrian {
 					R.add(dataLine);
 				}
 			}
+			
+			ensembleDecoupe.add(L);
+			ensembleDecoupe.add(R);
 
 			System.out.println("Colonne choisie : " + dimension);
-			//System.out.println(fs.toString());
-			System.out.println("Jeu de Gauche (L) : " + L.toString());
-			System.out.println("Nombre à  Gauche (L) : " + L.size());
-			System.out.println("Jeu de Droite (R) : " + R.toString());
-			System.out.println("Nombre à  Droite (R) : " + R.size() + "\n");
+			System.out.println("Jeu de Gauche (L) avec " + L.size() +" valeurs : " + L.toString());
+			System.out.println("Jeu de Droite (L) avec " + R.size() +" valeurs : " + R.toString());
+			System.out.println();
 			
-			if(!(L.size() <= k) && !(R.size() <= k)){
+			if(L.size() >= k && R.size() >= k){
 				doMondrian(L, k);
 				doMondrian(R, k);
 			}
 		}
+		
+		return this.ensembleDecoupe;
+	}
+	
+	public boolean isCutable(ArrayList<DataLine> data, int k){
+		/*if(data.size() >= k){
+			return true;
+		}
+		return false;*/
+		int dimension = chooseDimension(data);
+		HashMap<Integer,Integer> fs = frequencySet(data, dimension);
+		int splitVal = findMedian(fs);
+		
+		ArrayList<DataLine> L = new ArrayList<DataLine>();
+		ArrayList<DataLine> R = new ArrayList<DataLine>();
+
+		for (DataLine dataLine : data) {
+			if(dataLine.getColonne(dimension) <= splitVal){
+				L.add(dataLine);
+			}else{
+				R.add(dataLine);
+			}
+		}
+		
+		if(L.size() >= k && R.size() >= k){
+			return true;
+		}else{
+			return false;
+		}
+		
+		
 	}
 	
 }
