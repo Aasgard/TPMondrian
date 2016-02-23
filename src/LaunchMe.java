@@ -3,15 +3,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.TreeMap;
 
 public class LaunchMe {
 
 	/* Nombre de tuples */
-	static int n = 10;
+	static int n = 100;
 	/* Bornes min et max pour le QID n�1 */
 	static int borneMinQID1 = 1;
 	static int borneMaxQID1 = 5;
