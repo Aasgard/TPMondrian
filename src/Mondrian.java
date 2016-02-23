@@ -53,8 +53,17 @@ public class Mondrian {
 	public int findMedian(HashMap<Integer,Integer> fs){
 		System.out.println("Taille du HashMap en entrée : " + fs.size());
 		int cumulValeurs = 0;
-		int cutValue = -1;
+		int cutValue = 0;
 		Map<Integer, Integer> sortedMap = new TreeMap<Integer, Integer>(fs);
+		
+		int totalValues = 0;
+		
+		for(Entry<Integer, Integer> entry : sortedMap.entrySet()) {
+			int value = entry.getValue();
+
+			totalValues += value;
+		}
+		
 		System.out.println("Map triée : " + sortedMap.toString());
 
 		for(Entry<Integer, Integer> entry : sortedMap.entrySet()) {
@@ -62,13 +71,14 @@ public class Mondrian {
 			int value = entry.getValue();
 
 			cutValue = key;
-			int cm = cumulValeurs;
 			cumulValeurs += value;
 
-			if(cumulValeurs >= (sortedMap.size()/2)){
+			if(cumulValeurs >= /*data.size()*/totalValues/2){
 				break;
 			}
 		}
+		
+		System.out.println("Médiane : " + cutValue);
 
 		return cutValue;
 	}
@@ -94,7 +104,6 @@ public class Mondrian {
 
 			System.out.println("Colonne choisie : " + dimension);
 			//System.out.println(fs.toString());
-			System.out.println("Jeu coupé à  partir de la donnée " + splitVal);
 			System.out.println("Jeu de Gauche (L) : " + L.toString());
 			System.out.println("Nombre à  Gauche (L) : " + L.size());
 			System.out.println("Jeu de Droite (R) : " + R.toString());
