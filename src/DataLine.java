@@ -11,6 +11,12 @@ public class DataLine {
 		this.sd = sd;
 	}
 	
+	public int getColonne(int numcolonne){
+		if(numcolonne == 1){
+			return this.qid1;
+		}else{ return this.qid2; }
+	}
+	
 	public int getQid1() {
 		return qid1;
 	}
