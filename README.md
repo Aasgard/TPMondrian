@@ -25,6 +25,10 @@ Le nombre k désigne le nombre minimum de de données que doit comporter chaque 
 
 #####Etapes intégrant l'algorithme
 
+######Condition de continuité
+
+Pour continuer l'analyse de l'algorithme, il faut que la cardinalité des ensembles un tour en avance soit supérieur ou égal à k.
+
 ######chooseDimension()
 
 Cette première étape permet de déterminer la dimension (colonne) sur laquelle faire la coupe. Pour ce faire, il faut trouver la plus grande étendue entre les deux QID (différence entre la valeur maximale et la valeur minimale de chaque colonne).
@@ -35,3 +39,15 @@ Le réssultat sera stocké dans une variable et sera utilisé juste après.
 La seconde étape consiste à regrouper les valeurs indetiques entre elles sur la colonne de la dimension choisie (équivalent du GROUP BY SQL).
 Par exemple, si la dimension est 1, on regroupe les données indentiques sur la colonne 1 et on indique en face son nombre d'occurences.
 Pour faciliter la suite, on peut éventuellement le trier par ordre croissante des clefs.
+
+######findMedian(frequencySet)
+
+Cette étape a pour but de trouver la médiane du jeu de données. Il faut alors organiser les données par ordre croissante des clefs (si celà n'a pas été fait à l'étape précédente), pour ensuite faire le cumul des de leurs valeurs. Une fois que cette somme dépasse la moitié du nombre de données présentes dans le tableau, on renvoie alors la clef responsable.
+
+######Scindement des données
+
+Pour constituer nos deux parties de données (Gauche et Droite), on range dans la partie Gauche tout les couples dont la colonne dimension est inférieure ou égale à la médiane, et a Droite tout les couples supérieurs.
+
+######Récursivité
+
+Pour terminer la fonction, il faut appliquer cette algorithme de façon récursive aux deux parties (Gauche et Droite).
