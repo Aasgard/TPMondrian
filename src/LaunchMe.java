@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class LaunchMe {
 
 	/* Nombre de tuples */
-	static int n = 8;
+	static int n = 12;
 	/* Bornes min et max pour le QID n�1 */
 	static int borneMinQID1 = 1;
 	static int borneMaxQID1 = 10;

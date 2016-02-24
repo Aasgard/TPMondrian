@@ -89,7 +89,9 @@ public class Mondrian {
 	
 	public ArrayList<ArrayList<DataLine>> doMondrian(ArrayList<DataLine> data, int k){
 		if(!isCutable(data, k)){
-			System.out.println("Terminé ! Je renvoie le jeu de données en paramètre.");
+			//System.out.println("Terminé ! Je renvoie le jeu de données en paramètre.");
+			this.ensembleDecoupe.add(data);
+			return this.ensembleDecoupe;
 		}else{
 			int dimension = chooseDimension(data);
 			HashMap<Integer,Integer> fs = frequencySet(data, dimension);
@@ -114,20 +116,14 @@ public class Mondrian {
 			System.out.println("Jeu de Droite (L) avec " + R.size() +" valeurs : " + R.toString());
 			System.out.println();
 			
-			if(L.size() >= k && R.size() >= k){
-				doMondrian(L, k);
-				doMondrian(R, k);
-			}
+			doMondrian(L, k);
+			doMondrian(R, k);
 		}
 		
 		return this.ensembleDecoupe;
 	}
 	
 	public boolean isCutable(ArrayList<DataLine> data, int k){
-		/*if(data.size() >= k){
-			return true;
-		}
-		return false;*/
 		int dimension = chooseDimension(data);
 		HashMap<Integer,Integer> fs = frequencySet(data, dimension);
 		int splitVal = findMedian(fs);
@@ -143,13 +139,7 @@ public class Mondrian {
 			}
 		}
 		
-		if(L.size() >= k && R.size() >= k){
-			return true;
-		}else{
-			return false;
-		}
-		
-		
+		return (L.size() >= k) && (R.size() >= k);
 	}
 	
 }
