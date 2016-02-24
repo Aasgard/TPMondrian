@@ -1,4 +1,18 @@
-# TPMondrian
-TP de l'UE SBD - Utilisation de l'algorithme de Mondrian (k-Anonymat)
+# TPMondrian - SBD
+##Utilisation de l'algorithme de Mondrian (k-Anonymat)
 
-![Test image](http://assets1.bigthink.com/system/idea_thumbnails/45543/primary/Mondrian%20grid.jpg?1343912136)
+###Objectif du TP
+
+L'objectif de ce TP est l'utilisation de l'algorithme de Mondrian, qui à terme, permet de regrouper les données en classes d'équivalence afin d'anonymiser ces dernières. Le procédé s'essectue en plusieurs étapes.
+
+###Etapes
+
+####Prérequis
+
+Le jeu de données final est constitué de deux quasi-identifiants (QID1 et QID2) et d'une donnée sensible (SD).
+
+#####Création du jeu de données
+
+Les **QID sont générés aléatoirement** pour chaque donnée. SD est choisi aléatoirement dans un tableau de maladie (simulation de donnée sensible). On définit alors les bornes des nombres aléatoires générés ainsi que le nombre de données à créer.
+
+#####
