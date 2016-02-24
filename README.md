@@ -1,4 +1,4 @@
 # TPMondrian
 TP de l'UE SBD - Utilisation de l'algorithme de Mondrian (k-Anonymat)
 
-!image[Test image](https://github.com/Aasgard/TPMondrian/blob/master/P1050614.JPG?raw=true)
+![Test image](http://assets1.bigthink.com/system/idea_thumbnails/45543/primary/Mondrian%20grid.jpg?1343912136)
