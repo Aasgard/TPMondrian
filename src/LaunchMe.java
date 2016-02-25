@@ -7,13 +7,13 @@ import java.util.ArrayList;
 public class LaunchMe {
 
 	/* Nombre de tuples */
-	static int n = 12;
+	static int n = 10;
 	/* Bornes min et max pour le QID n�1 */
 	static int borneMinQID1 = 1;
-	static int borneMaxQID1 = 10;
+	static int borneMaxQID1 = 3;
 	/* Bornes min et max pour le QID n�2 */
-	static int borneMinQID2 = 1;
-	static int borneMaxQID2 = 10;
+	static int borneMinQID2 = 4;
+	static int borneMaxQID2 = 5;
 	/* Tableau contenant toutes les valeurs des donn�es sensibles possibles */
 	static String[] tabMaladies = {"Leucemie","SIDA","Vitiligo","Biermer","Blennorragie","Hemochromatose"};
 	/* Nombre de valeurs possibles pour la donn�e sensible */

@@ -91,7 +91,6 @@ public class Mondrian {
 		if(!isCutable(data, k)){
 			//System.out.println("Terminé ! Je renvoie le jeu de données en paramètre.");
 			this.ensembleDecoupe.add(data);
-			return this.ensembleDecoupe;
 		}else{
 			int dimension = chooseDimension(data);
 			HashMap<Integer,Integer> fs = frequencySet(data, dimension);
@@ -108,12 +107,12 @@ public class Mondrian {
 				}
 			}
 			
-			ensembleDecoupe.add(L);
-			ensembleDecoupe.add(R);
+			//ensembleDecoupe.add(L);
+			//ensembleDecoupe.add(R);
 
 			System.out.println("Colonne choisie : " + dimension);
 			System.out.println("Jeu de Gauche (L) avec " + L.size() +" valeurs : " + L.toString());
-			System.out.println("Jeu de Droite (L) avec " + R.size() +" valeurs : " + R.toString());
+			System.out.println("Jeu de Droite (R) avec " + R.size() +" valeurs : " + R.toString());
 			System.out.println();
 			
 			doMondrian(L, k);
