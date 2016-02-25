@@ -51,3 +51,7 @@ Pour constituer nos deux parties de données (Gauche et Droite), on range dans l
 ######Récursivité
 
 Pour terminer la fonction, il faut appliquer cette algorithme de façon récursive aux deux parties (Gauche et Droite).
+
+#####Résultat final
+
+Pour terminer l'analyse, pour que le jeu de données initial soit considéré comme K-Anonyme, il faut que la taille d'aucune Classe d'Equivalence soit inférieure strictement à n ou supérieur strictement à (k*2+1).
