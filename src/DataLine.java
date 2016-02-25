@@ -1,22 +1,26 @@
 
 public class DataLine {
 	
+	/* Attributs de la classes : deux QID et une SD */
 	private int qid1;
 	private int qid2;
 	private String sd;
 	
+	/* Constrcteur de la DataLine */
 	public DataLine(int qid1, int qid2, String sd) {
 		this.qid1 = qid1;
 		this.qid2 = qid2;
 		this.sd = sd;
 	}
 	
+	/* Renvoie la valeur de la colonne rentrée en paramètre */
 	public int getColonne(int numcolonne){
 		if(numcolonne == 1){
 			return this.qid1;
 		}else{ return this.qid2; }
 	}
 	
+	/* Getters & Setters */
 	public int getQid1() {
 		return qid1;
 	}
@@ -41,10 +45,12 @@ public class DataLine {
 		this.sd = sd;
 	}
 	
+	/* Formattage de la DataLine permettant de l'insérer dans le CSV File */
 	public String toCSV(){
 		return this.qid1 + ", " + this.qid2 + "\n";
 	}
 	
+	/* Formattage de la DataLine permettant de l'insérer dans le CSV File avec la maladie */
 	public String toRawCSV(){
 		return this.qid1 + ", " + this.qid2 + ", " + this.sd + "\n";
 	}
